@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="images/logo.png">
+<title>ADM Sabaoth Church Siracusa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <img class="logo" src="images/logo.png" width="160" height="160" alt="Logo ADM Sabaoth Church">
+  <p class="city">Siracusa</p>
+  <h1>ADM Sabaoth Church</h1>
+  <p>Ti aspettiamo. Qui trovi i nostri incontri della settimana e i dipartimenti a cui puoi unirti.</p>
+  <p class="pastors">I responsabili della chiesa sono <b>Past. Vinicius Farinelli</b> e <b>Past. Antonella Cavaliere</b>.</p>
+  <p class="addr">Dove siamo: Via Raffadali 16/B, Pizzuta, Siracusa 96100</p>
+  <a class="btn" href="https://maps.app.goo.gl/d8hTg7NX4uiDzxAb7?g_st=ac" target="_blank" rel="noopener">Apri la mappa</a>
+  <nav class="nav" aria-label="Sezioni"><a href="#att">Incontri</a><a href="#dip">Dipartimenti</a><a href="#lg">Life Group</a><a href="#ev">Eventi</a><a href="#sh">Shop</a><a href="#yt">Registrazioni</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section aria-labelledby="att">
+    <h2 id="att">Gli incontri della settimana</h2>
+    <p class="lead">Ogni settimana ci troviamo in questi momenti.</p>
+    <ul class="week">
+      <li><span class="day">Domenica</span><span class="what">Culto</span><span class="when">Ore 10:30</span></li>
+      <li><span class="day">Martedì</span><span class="what">Preghiera</span><span class="when">Ore 19:00</span></li>
+      <li><span class="day">Giovedì</span><span class="what">Life nelle case</span><span class="when">Ore 19:00</span></li>
+      <li><span class="day">Sabato</span><span class="what">Riunione dei giovani</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="dip">
+    <h2 id="dip">I dipartimenti</h2>
+    <p class="lead">Scegli un dipartimento, guarda chi ne è responsabile e scrivigli per iscriverti.</p>
+    <div class="deps" id="deps"></div>
+  </section>
+
+  <section aria-labelledby="al">
+    <h2 id="al">E tanto altro</h2>
+    <p class="lead">In chiesa ci sono tantissime altre attività, oltre a quelle che trovi qui. Eccone alcune.</p>
+    <div class="deps">
+      <article class="dep"><h3>Intercessione</h3><p class="tag">Pregare per gli altri</p><p class="desc">Intercedere significa presentare a Dio le necessità, le sofferenze e le speranze delle persone, delle famiglie, della città e del mondo. È un gruppo che si riunisce per pregare insieme, con costanza, per chi ha bisogno e per ciò che Dio sta facendo.</p><p class="lead-name">Responsabili: <b>Katia e Roberta Caschetto</b></p><details><summary>Voglio partecipare</summary><div class="f"><div><label for="in-n">Nome e cognome</label><input id="in-n" autocomplete="name"></div><div><label for="in-p">Cellulare</label><input id="in-p" type="tel" autocomplete="tel"></div><div><label for="in-e">Email (facoltativa)</label><input id="in-e" type="email" autocomplete="email"></div><button type="button" id="in-b">Invia iscrizione</button><p class="msg" id="in-s" role="status"></p></div></details></article>
+      <article class="dep"><h3>Gruppo di calcio</h3><p class="tag">Sport e comunione</p><p class="desc">Un gruppo di credenti che si ritrova per giocare a calcio insieme. Un modo semplice per fare squadra, rafforzare le amicizie e vivere la comunione anche fuori dagli incontri della chiesa.</p></article>
+      <article class="dep"><h3>Mentorato</h3><p class="tag">Camminare accanto a qualcuno</p><p class="desc">Il mentorato è la possibilità che una persona si prenda cura di un membro della chiesa: prega e digiuna per lui o per lei, lo accompagna a crescere nelle vie del Signore ed è un valido sostegno nel suo cammino.</p><details><summary>Voglio un mentore</summary><div class="f"><p class="desc">Non hai ancora un mentore? Lascia qui i tuoi dati e ti contatteremo.</p><div><label for="mt-n">Nome e cognome</label><input id="mt-n" autocomplete="name"></div><div><label for="mt-e">Email</label><input id="mt-e" type="email" autocomplete="email"></div><div><label for="mt-p">Cellulare (facoltativo)</label><input id="mt-p" type="tel" autocomplete="tel"></div><button type="button" id="mt-b">Invia richiesta</button><p class="msg" id="mt-s" role="status"></p></div></details></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="lg">
+    <h2 id="lg">Life Group</h2>
+    <p class="lead">Attraverso questi gruppi vogliamo essere una presenza attiva nei diversi quartieri, favorendo relazioni autentiche e offrendo a ogni persona la possibilità di sentirsi parte di una famiglia. Ecco i Life Group attualmente organizzati sul territorio.</p>
+    <div class="deps" id="life"></div>
+  </section>
+
+  <section aria-labelledby="ev">
+    <h2 id="ev">Prossimi eventi</h2>
+    <p class="lead">Gli appuntamenti da non perdere.</p>
+    <ul class="week" id="events"></ul>
+  </section>
+
+  <section aria-labelledby="sh">
+    <h2 id="sh">Shop</h2>
+    <p class="lead">Magliette, Bibbie e libri della chiesa.</p>
+    <div class="deps" id="shop"></div>
+  </section>
+
+  <section aria-labelledby="yt">
+    <h2 id="yt">Rivedi gli incontri</h2>
+    <p class="lead">Qui puoi rivivere tutte le attività e gli incontri che vengono fatti in chiesa. Seguici anche su Instagram e Facebook.</p>
+    <div class="btns"><a class="btn" id="yt-link" href="https://m.youtube.com/results?sp=mAEA&search_query=adm+siracusa#searching" target="_blank" rel="noopener">Guarda su YouTube</a><a class="btn alt" href="https://www.instagram.com/admsabaoth?xtok=Znh0Nm9xOG95YmV2" target="_blank" rel="noopener">Instagram</a><a class="btn alt" href="https://www.facebook.com/share/1LxFjCsvwn/" target="_blank" rel="noopener">Facebook</a></div>
+  </section>
+</main>
+
+<footer><div class="wrap">ADM Sabaoth Church · Via Raffadali 16/B, Pizzuta, Siracusa 96100</div></footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
