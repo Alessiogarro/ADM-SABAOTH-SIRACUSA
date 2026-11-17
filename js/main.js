@@ -25,9 +25,9 @@ var EVENTS=[{d:"Sabato 21 novembre",t:"Escursione del gruppo Over 50",w:"Una gio
 var SHOP=[{n:"Magliette",x:"Le magliette della chiesa."},{n:"Bibbie",x:"Bibbie per leggere e studiare."},{n:"Libri",x:"Libri per crescere nel cammino."}];
 document.getElementById("events").innerHTML=EVENTS.map(function(e){return '<li><span class="day">'+e.d+'</span><span class="what">'+e.t+'</span><span class="when">'+e.w+'</span></li>';}).join("");
 document.getElementById("shop").innerHTML=SHOP.map(function(s){return '<article class="dep"><h3>'+s.n+'</h3><p class="desc">'+s.x+'</p><p class="lead-name">Prezzo: <b>da inserire</b></p></article>';}).join("");
-var LIFE=[{z:'Pizzuta',g:[['Gruppo 1','Pastor Vinicius e Pastor Antonella'],['Gruppo 2','Augusto e Lidia']]},{z:'Villaggio Miano',g:[['Gruppo 1','Valentina e Daniele'],['Gruppo 2','Giusy Calì']]},{z:'Viale Tica',g:[['Gruppo 1','Salvo e Maria']]},{z:'Mazzarrona',g:[['Gruppo 1','Roberta Bellassai']]},{z:'Parco Robinson, quartiere Tiche',g:[['Gruppo 1','Luca Orofino e Anna']]},{z:'Città Giardino Belvedere',g:[['Gruppo 1','Alessio e Giuliana']]}];
+var LIFE=[{z:'Pizzuta',g:[['Gruppo 1','Pastor Vinicius e Pastor Antonella'],['Gruppo 2','Augusto e Lidia']]},{z:'Villaggio Miano',g:[['Gruppo 1','Valentina e Daniele'],['Gruppo 2','Giusy Calì']]},{z:'Viale Tica',g:[['Gruppo 1','Salvo e Maria']]},{z:'Mazzarrona',g:[['Gruppo 1','Roberta Bellassai']]},{z:'Parco Robinson, quartiere Tiche',g:[['Gruppo 1','Luca Orofino e Anna']]},{z:'Città Giardino Belvedere',g:[['Gruppo 1','Alessio e Giuliana']]},{z:'Gruppo Giovani',g:[['Gruppo 1','Ester, Alessandro e Carlotta']]}];
 // Email dei responsabili, es. LEM['Pizzuta Gruppo 1']='nome@email.it'
-var LEM={'Città Giardino Belvedere Gruppo 1':'garalessio@gmail.com','Pizzuta Gruppo 1':'Visfit@yahoo.it','Parco Robinson, quartiere Tiche Gruppo 1':'lucaorofino@hotmail.it','Villaggio Miano Gruppo 1':'valentinapatania12@gmail.com'};var LWA={'Città Giardino Belvedere Gruppo 1':'393207436379','Pizzuta Gruppo 1':'393476870698','Parco Robinson, quartiere Tiche Gruppo 1':'393920613832','Villaggio Miano Gruppo 1':'393481711007','Viale Tica Gruppo 1':'393496829028'};var LG=[];
+var LEM={'Città Giardino Belvedere Gruppo 1':'garalessio@gmail.com','Pizzuta Gruppo 1':'Visfit@yahoo.it','Parco Robinson, quartiere Tiche Gruppo 1':'lucaorofino@hotmail.it','Villaggio Miano Gruppo 1':'valentinapatania12@gmail.com'};var LWA={'Città Giardino Belvedere Gruppo 1':'393207436379','Pizzuta Gruppo 1':'393476870698','Parco Robinson, quartiere Tiche Gruppo 1':'393920613832','Villaggio Miano Gruppo 1':'393481711007','Viale Tica Gruppo 1':'393496829028','Gruppo Giovani Gruppo 1':'393518754346'};var LG=[];
 document.getElementById('life').innerHTML=LIFE.map(function(z){return '<article class="dep"><h3>'+z.z+'</h3>'+z.g.map(function(g){var id=LG.length,n=z.z+' '+g[0];LG.push({n:n,z:z.z+' ('+g[1]+')'});return '<div class="grp"><p class="lead-name">Responsabili: <b>'+g[1]+'</b></p><details><summary>Voglio iscrivermi</summary><div class="f"><div><label for="ln'+id+'">Nome e cognome</label><input id="ln'+id+'" autocomplete="name"></div><div><label for="lt'+id+'">Email</label><input id="lt'+id+'" type="email" autocomplete="email"></div><div><label for="lp'+id+'">Cellulare</label><input id="lp'+id+'" type="tel" autocomplete="tel"></div><div><label for="lm'+id+'">Messaggio</label><textarea id="lm'+id+'">Ciao, vorrei iscrivermi al Life Group di '+z.z+' (responsabili: '+g[1]+').</textarea></div><button type="button" data-l="'+id+'" data-k="w">Invia su WhatsApp</button><button type="button" class="alt" data-l="'+id+'" data-k="e">Invia via email</button><p class="msg" id="ls'+id+'" role="status"></p></div></details></div>';}).join('')+'</article>';}).join('');
 document.getElementById('life').addEventListener('click',function(ev){
   var b=ev.target.closest('button[data-l]');if(!b)return;
@@ -39,12 +39,6 @@ document.getElementById('life').addEventListener('click',function(ev){
   var body=msg+'\n\nNome: '+nome+'\nEmail: '+rec+'\nCellulare: '+tel;go(k=='w'?'https://wa.me/'+LWA[n]+'?text='+encodeURIComponent('Iscrizione Life Group '+LG[i].z+'\n\n'+body):'mailto:'+LEM[n]+'?subject='+encodeURIComponent('Iscrizione Life Group '+LG[i].z)+'&body='+encodeURIComponent(body),true);
   s.textContent=k=='w'?'Si apre WhatsApp: premi invio per mandare il messaggio.':'Si apre la tua email: premi invio per mandare il messaggio. Se non si apre, scrivi a '+LEM[n]+'.';
 });
-function post(key,subject,nome,rec,tel,msg,s,b){
-  b.disabled=true;s.textContent="Invio in corso…";
-  fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:key,subject:subject,from_name:"Sito ADM Sabaoth Church",name:nome,email:rec,phone:tel,message:msg+"\n\nNome: "+nome+"\nEmail: "+rec+"\nCellulare: "+tel})})
-  .then(function(r){return r.json();}).then(function(j){b.disabled=false;s.textContent=j.success?"Richiesta inviata! Il responsabile la riceverà via email.":"Invio non riuscito. Riprova oppure usa WhatsApp.";})
-  .catch(function(){b.disabled=false;s.textContent="Invio non riuscito. Riprova oppure usa WhatsApp.";});
-}
 var MENT={w:"393936701679",e:""};// numero WhatsApp con prefisso, es. 393331234567
 document.getElementById("mt-b").addEventListener("click",function(){
   var n=document.getElementById("mt-n").value.trim(),e=document.getElementById("mt-e").value.trim(),p=document.getElementById("mt-p").value.trim(),s=document.getElementById("mt-s");
@@ -61,11 +55,24 @@ document.getElementById("in-b").addEventListener("click",function(){
   go("https://wa.me/"+INTER.w+"?text="+encodeURIComponent("Iscrizione a Intercessione\n\nNome: "+n+"\nCellulare: "+p+(e?"\nEmail: "+e:"")),true);
   s.textContent="Si apre WhatsApp: premi invio per mandare l’iscrizione.";
 });
+var PHOTOS={};// nome dipartimento -> indirizzo della foto
+function phHtml(n){var p=PHOTOS[n];return '<div class="ph">'+(p?'<img src="'+p+'" alt="Foto del dipartimento '+n+'" loading="lazy">':'<span>'+n.charAt(0)+'</span>')+'</div>';}
+var VIEWS=["home","dipartimenti","life-group","eventi","gruppi","shop","registrazioni"];
+function show(v){if(VIEWS.indexOf(v)<0)v="home";VIEWS.forEach(function(x){document.getElementById("v-"+x).classList.toggle("on",x===v);});document.body.setAttribute("data-view",v);document.querySelectorAll("#nav button").forEach(function(b){b.classList.toggle("act",b.getAttribute("data-go")===v);});window.scrollTo(0,0);}
+document.addEventListener("click",function(ev){var b=ev.target.closest("[data-go]");if(!b)return;var v=b.getAttribute("data-go");if(location.hash.slice(1)===v)show(v);else location.hash=v;});
+window.addEventListener("hashchange",function(){show(location.hash.slice(1));});
+show(location.hash.slice(1)||"home");
+function post(key,subject,nome,rec,tel,msg,s,b){
+  b.disabled=true;s.textContent="Invio in corso…";
+  fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:key,subject:subject,from_name:"Sito ADM Sabaoth Church",name:nome,email:rec,phone:tel,message:msg+"\n\nNome: "+nome+"\nEmail: "+rec+"\nCellulare: "+tel})})
+  .then(function(r){return r.json();}).then(function(j){b.disabled=false;s.textContent=j.success?"Richiesta inviata! Il responsabile la riceverà via email.":"Invio non riuscito. Riprova oppure usa WhatsApp.";})
+  .catch(function(){b.disabled=false;s.textContent="Invio non riuscito. Riprova oppure usa WhatsApp.";});
+}
 function go(u,blank){var a=document.createElement("a");a.href=u;if(blank){a.target="_blank";a.rel="noopener";}document.body.appendChild(a);a.click();a.remove();}
 var root=document.getElementById("deps");
 DEPS.forEach(function(d,i){
   var c=document.createElement("article");c.className="dep";
-  c.innerHTML='<h3>'+d.n+'</h3>'+(DESC[d.n]&&DESC[d.n].t?'<p class="tag">'+DESC[d.n].t+'</p>':'')+'<p class="desc">'+(DESC[d.n]?DESC[d.n].x:"")+'</p><p class="lead-name">'+(/,| e /.test(d.r)?'Responsabili':'Responsabile')+': <b>'+d.r+'</b></p>'+
+  c.innerHTML=phHtml(d.n)+'<h3>'+d.n+'</h3>'+(DESC[d.n]&&DESC[d.n].t?'<p class="tag">'+DESC[d.n].t+'</p>':'')+'<p class="desc">'+(DESC[d.n]?DESC[d.n].x:"")+'</p><p class="lead-name">'+(/,| e /.test(d.r)?'Responsabili':'Responsabile')+': <b>'+d.r+'</b></p>'+
   '<details><summary>Voglio iscrivermi</summary><div class="f">'+
   '<div><label for="n'+i+'">Nome e cognome</label><input id="n'+i+'" autocomplete="name"></div>'+
   '<div><label for="t'+i+'">Email</label><input id="t'+i+'" type="email" autocomplete="email"></div>'+

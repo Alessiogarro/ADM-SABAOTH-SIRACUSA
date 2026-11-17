@@ -10,17 +10,27 @@
 </head>
 <body>
 <header class="hero"><div class="wrap">
-  <img class="logo" src="images/logo.png" width="160" height="160" alt="Logo ADM Sabaoth Church">
-  <p class="city">Siracusa</p>
-  <h1>ADM Sabaoth Church</h1>
-  <p>Ti aspettiamo. Qui trovi i nostri incontri della settimana e i dipartimenti a cui puoi unirti.</p>
-  <p class="pastors">I responsabili della chiesa sono <b>Past. Vinicius Farinelli</b> e <b>Past. Antonella Cavaliere</b>.</p>
-  <p class="addr">Dove siamo: Via Raffadali 16/B, Pizzuta, Siracusa 96100</p>
-  <a class="btn" href="https://maps.app.goo.gl/d8hTg7NX4uiDzxAb7?g_st=ac" target="_blank" rel="noopener">Apri la mappa</a>
-  <nav class="nav" aria-label="Sezioni"><a href="#att">Incontri</a><a href="#dip">Dipartimenti</a><a href="#lg">Life Group</a><a href="#ev">Eventi</a><a href="#sh">Shop</a><a href="#yt">Registrazioni</a></nav>
+  <div class="brand"><img class="logo" src="images/logo.png" width="160" height="160" alt="Logo ADM Sabaoth Church"><div><p class="city">Siracusa</p><h1>ADM Sabaoth Church</h1></div></div>
+  <div class="hero-more">
+    <p class="wl">Benvenuto in famiglia</p>
+    <p>Siamo felici che tu sia qui. ADM Sabaoth Church è una chiesa che ama Dio e Siracusa: che tu stia cercando una famiglia, un luogo dove crescere nella fede o semplicemente un posto dove sentirti accolto, qui c’è spazio per te.</p>
+    <p class="cta"><button type="button" data-go="dipartimenti">Scopri i dipartimenti</button> <button type="button" class="alt" data-go="life-group">Trova un Life Group</button></p>
+    <p class="pastors">I responsabili della chiesa sono <b>Past. Vinicius Farinelli</b> e <b>Past. Antonella Cavaliere</b>.</p>
+    <p class="addr">Dove siamo: Via Raffadali 16/B, Pizzuta, Siracusa 96100</p>
+    <a class="btn" href="https://maps.app.goo.gl/d8hTg7NX4uiDzxAb7?g_st=ac" target="_blank" rel="noopener">Apri la mappa</a>
+  </div>
+  <nav class="nav" id="nav" aria-label="Sezioni"><button type="button" data-go="home">Home</button><button type="button" data-go="dipartimenti">Dipartimenti</button><button type="button" data-go="life-group">Life Group</button><button type="button" data-go="eventi">Eventi</button><button type="button" data-go="gruppi">Gruppi e percorsi</button><button type="button" data-go="shop">Shop</button><button type="button" data-go="registrazioni">Registrazioni</button></nav>
 </div></header>
 
 <main class="wrap">
+  <div class="view on" id="v-home"><section class="vision" aria-labelledby="vs"><h2 id="vs">La nostra visione</h2><p class="vq">Vedere persone salvate, guarite, liberate, discepolate, equipaggiate che, attraverso un’intensa relazione con Dio, raggiungono ogni generazione con la potenza dello Spirito.</p></section>
+  <section class="story" aria-labelledby="st">
+    <h2 id="st">La nostra storia</h2>
+    <p class="lead">Una chiesa nata da una chiamata di Dio.</p>
+    <p>La nostra storia inizia con una famiglia brasiliana che, rispondendo a una chiamata di Dio, ha scelto di venire a Siracusa. Da quel desiderio di vedere la città trasformata dall’amore di Dio è cresciuta una famiglia di persone di ogni età, che si ritrova per adorare, pregare e servire insieme.</p>
+    <p>Oggi la chiesa si riunisce ogni domenica alle 10:30 nella sede di Via Raffadali, nel quartiere Pizzuta, e vive durante la settimana nei Life Group, presenti in tanti quartieri della città.</p>
+    <p>Dalle attività per i bambini ai percorsi per giovani, famiglie e persone della terza età, ogni dipartimento è un modo concreto per servire il prossimo e portare l’amore di Cristo ovunque.</p>
+  </section>
   <section aria-labelledby="att">
     <h2 id="att">Gli incontri della settimana</h2>
     <p class="lead">Ogni settimana ci troviamo in questi momenti.</p>
@@ -30,17 +40,17 @@
       <li><span class="day">Giovedì</span><span class="what">Life nelle case</span><span class="when">Ore 19:00</span></li>
       <li><span class="day">Sabato</span><span class="what">Riunione dei giovani</span></li>
     </ul>
-  </section>
+  </section></div>
 
-  <section aria-labelledby="dip">
+  <section class="view" id="v-dipartimenti" aria-labelledby="dip">
     <h2 id="dip">I dipartimenti</h2>
     <p class="lead">Scegli un dipartimento, guarda chi ne è responsabile e scrivigli per iscriverti.</p>
     <div class="deps" id="deps"></div>
   </section>
 
-  <section aria-labelledby="al">
-    <h2 id="al">E tanto altro</h2>
-    <p class="lead">In chiesa ci sono tantissime altre attività, oltre a quelle che trovi qui. Eccone alcune.</p>
+  <section class="view" id="v-gruppi" aria-labelledby="al">
+    <h2 id="al">Gruppi e percorsi</h2>
+    <p class="lead">Oltre ai dipartimenti, la chiesa offre gruppi e percorsi pensati per crescere insieme nella fede e nell’amicizia.</p>
     <div class="deps">
       <article class="dep"><h3>Intercessione</h3><p class="tag">Pregare per gli altri</p><p class="desc">Intercedere significa presentare a Dio le necessità, le sofferenze e le speranze delle persone, delle famiglie, della città e del mondo. È un gruppo che si riunisce per pregare insieme, con costanza, per chi ha bisogno e per ciò che Dio sta facendo.</p><p class="lead-name">Responsabili: <b>Katia e Roberta Caschetto</b></p><details><summary>Voglio partecipare</summary><div class="f"><div><label for="in-n">Nome e cognome</label><input id="in-n" autocomplete="name"></div><div><label for="in-p">Cellulare</label><input id="in-p" type="tel" autocomplete="tel"></div><div><label for="in-e">Email (facoltativa)</label><input id="in-e" type="email" autocomplete="email"></div><button type="button" id="in-b">Invia iscrizione</button><p class="msg" id="in-s" role="status"></p></div></details></article>
       <article class="dep"><h3>Gruppo di calcio</h3><p class="tag">Sport e comunione</p><p class="desc">Un gruppo di credenti che si ritrova per giocare a calcio insieme. Un modo semplice per fare squadra, rafforzare le amicizie e vivere la comunione anche fuori dagli incontri della chiesa.</p></article>
@@ -48,25 +58,25 @@
     </div>
   </section>
 
-  <section aria-labelledby="lg">
+  <section class="view" id="v-life-group" aria-labelledby="lg">
     <h2 id="lg">Life Group</h2>
     <p class="lead">Attraverso questi gruppi vogliamo essere una presenza attiva nei diversi quartieri, favorendo relazioni autentiche e offrendo a ogni persona la possibilità di sentirsi parte di una famiglia. Ecco i Life Group attualmente organizzati sul territorio.</p>
     <div class="deps" id="life"></div>
   </section>
 
-  <section aria-labelledby="ev">
+  <section class="view" id="v-eventi" aria-labelledby="ev">
     <h2 id="ev">Prossimi eventi</h2>
     <p class="lead">Gli appuntamenti da non perdere.</p>
     <ul class="week" id="events"></ul>
   </section>
 
-  <section aria-labelledby="sh">
+  <section class="view" id="v-shop" aria-labelledby="sh">
     <h2 id="sh">Shop</h2>
     <p class="lead">Magliette, Bibbie e libri della chiesa.</p>
     <div class="deps" id="shop"></div>
   </section>
 
-  <section aria-labelledby="yt">
+  <section class="view" id="v-registrazioni" aria-labelledby="yt">
     <h2 id="yt">Rivedi gli incontri</h2>
     <p class="lead">Qui puoi rivivere tutte le attività e gli incontri che vengono fatti in chiesa. Seguici anche su Instagram e Facebook.</p>
     <div class="btns"><a class="btn" id="yt-link" href="https://m.youtube.com/results?sp=mAEA&search_query=adm+siracusa#searching" target="_blank" rel="noopener">Guarda su YouTube</a><a class="btn alt" href="https://www.instagram.com/admsabaoth?xtok=Znh0Nm9xOG95YmV2" target="_blank" rel="noopener">Instagram</a><a class="btn alt" href="https://www.facebook.com/share/1LxFjCsvwn/" target="_blank" rel="noopener">Facebook</a></div>
