@@ -8,6 +8,9 @@ Sito statico (HTML, CSS e JavaScript), senza installazioni né build.
 - `js/main.js` – contenuti (dipartimenti, Life Group, eventi) e invio delle iscrizioni
 - `images/logo.png` – logo
 - `images/dipartimenti/` – foto dei dipartimenti
+- `images/donazioni.png` – immagine con i dati per il bonifico (sezione Donazioni)
+- `manifest.webmanifest` e `sw.js` – rendono il sito un'app installabile (funziona anche con poca connessione)
+- `images/icons/` – icone dell'app
 - `netlify.toml` – impostazioni di pubblicazione
 
 ## Pubblicare
@@ -24,3 +27,9 @@ In `js/main.js`, in cima, nell'elenco `KEYS`, va inserita per ogni email di resp
 
 ## Modificare contatti e testi
 Tutto in `js/main.js`: `DEPS` (dipartimenti e responsabili), `DESC` (descrizioni), `LIFE`, `LEM` e `LWA` (Life Group e contatti), `EVENTS` (eventi). I numeri WhatsApp vanno scritti con il prefisso, senza spazi né +, ad esempio `393331234567`. I testi della storia e della visione sono in `index.html`.
+
+## App installabile
+Il sito è anche un'app (PWA): una volta pubblicato su Netlify (indirizzo https) si può aggiungere alla schermata Home.
+- **Android (Chrome):** compare il pulsante "Installa l'app" in fondo alla pagina, oppure menu ⋮ → *Installa app*.
+- **iPhone (Safari):** tocca *Condividi* → *Aggiungi alla schermata Home*.
+Se cambi i file, aggiorna il numero in `var CACHE="adm-sabaoth-v2"` dentro `sw.js` (ad esempio v2) per forzare l'aggiornamento sui telefoni.

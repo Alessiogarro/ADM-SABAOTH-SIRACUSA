@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ADM Sabaoth">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="images/logo.png">
 <title>ADM Sabaoth Church Siracusa</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600&display=swap">
@@ -19,7 +26,7 @@
     <p class="addr">Dove siamo: Via Raffadali 16/B, Pizzuta, Siracusa 96100</p>
     <a class="btn" href="https://maps.app.goo.gl/d8hTg7NX4uiDzxAb7?g_st=ac" target="_blank" rel="noopener">Apri la mappa</a>
   </div>
-  <nav class="nav" id="nav" aria-label="Sezioni"><button type="button" data-go="home">Home</button><button type="button" data-go="dipartimenti">Dipartimenti</button><button type="button" data-go="life-group">Life Group</button><button type="button" data-go="eventi">Eventi</button><button type="button" data-go="gruppi">Gruppi e percorsi</button><button type="button" data-go="shop">Shop</button><button type="button" data-go="registrazioni">Registrazioni</button></nav>
+  <nav class="nav" id="nav" aria-label="Sezioni"><button type="button" data-go="home">Home</button><button type="button" data-go="dipartimenti">Dipartimenti</button><button type="button" data-go="life-group">Life Group</button><button type="button" data-go="eventi">Eventi</button><button type="button" data-go="gruppi">Gruppi e percorsi</button><button type="button" data-go="donazioni">Donazioni</button><button type="button" data-go="registrazioni">Registrazioni</button></nav>
 </div></header>
 
 <main class="wrap">
@@ -70,10 +77,10 @@
     <ul class="week" id="events"></ul>
   </section>
 
-  <section class="view" id="v-shop" aria-labelledby="sh">
-    <h2 id="sh">Shop</h2>
-    <p class="lead">Magliette, Bibbie e libri della chiesa.</p>
-    <div class="deps" id="shop"></div>
+  <section class="view" id="v-donazioni" aria-labelledby="dn">
+    <h2 id="dn">Donazioni</h2>
+    <p class="lead">Se desideri sostenere la missione della chiesa, puoi farlo con un bonifico bancario. Grazie per la tua generosità!</p>
+    <img class="don" src="images/donazioni.png" alt="Dati per il bonifico bancario della Chiesa Assemblea di Dio Missionaria, con codice QR per salvare le coordinate" width="1400" height="624">
   </section>
 
   <section class="view" id="v-registrazioni" aria-labelledby="yt">
@@ -83,7 +90,8 @@
   </section>
 </main>
 
-<footer><div class="wrap">ADM Sabaoth Church · Via Raffadali 16/B, Pizzuta, Siracusa 96100</div></footer>
+<footer><div class="wrap">ADM Sabaoth Church · Via Raffadali 16/B, Pizzuta, Siracusa 96100
+    <div class="install"><button type="button" id="install-btn" hidden>Installa l’app</button><p id="install-hint" hidden>Per installare l’app: tocca Condividi e poi “Aggiungi alla schermata Home”.</p></div></div></footer>
 
 <script src="js/main.js"></script>
 </body>

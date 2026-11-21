@@ -90,3 +90,5 @@ body[data-view="home"] .logo{width:7rem;height:7rem}
 .ph span{font:400 3.4rem/1 var(--serif);color:var(--gold)}
 .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .vision .vq{font:400 clamp(1.3rem,4.5vw,1.8rem)/1.35 var(--serif);border-left:5px solid var(--gold);padding:.25rem 0 .25rem 1rem;margin:0;max-width:40rem}
+.install{margin-top:1rem}.install p{margin:0;font-weight:600;color:var(--ink)}
+.don{display:block;width:100%;max-width:46rem;height:auto;background:#000;border:1px solid var(--line);border-radius:8px}

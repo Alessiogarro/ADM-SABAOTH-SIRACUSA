@@ -22,9 +22,7 @@ var DESC={"Sociale": {"t": "L’amore che diventa azione", "x": "Un dipartimento
 // Eventi di dicembre: sostituisci i segnaposto con date e titoli reali.
 var EVENTS=[{d:"Sabato 21 novembre",t:"Escursione del gruppo Over 50",w:"Una giornata da trascorrere insieme, all’insegna della condivisione, delle chiacchiere tra amici, della fratellanza e dell’amicizia!<br><b>Partenza:</b> ore 8:30 dalla chiesa ADM Sabaoth Church Siracusa<br><b>Pranzo:</b> presso Agriturismo Bellaera, Modica<br><b>Rientro:</b> previsto per le ore 17:00<br>Organizzato dal gruppo Over 50."},{d:"Martedì 8 dicembre",t:"Big Life con il Past. Giuseppe Punto",w:"Un appuntamento speciale con i Life Group, ospite il Past. Giuseppe Punto."},
  {d:"Sabato 12 dicembre",t:"Serata di Natale",w:"Una serata speciale da vivere insieme, condividendo la gioia del Natale e il piacere di stare in famiglia come comunità.<br><b>Inizio:</b> ore 19:00"},{d:"Giovedì 31 dicembre",t:"Capodanno insieme",w:"Concludiamo il 2026 e accogliamo il nuovo anno insieme come chiesa!<br><b>Ore 20:00:</b> cena insieme alla chiesa.<br><b>Ore 22:00:</b> lode, adorazione e preghiera.<br>Un momento speciale per ringraziare Dio per l’anno trascorso e affidare a Lui il nuovo anno 2027, iniziandolo insieme nella Sua presenza."}];
-var SHOP=[{n:"Magliette",x:"Le magliette della chiesa."},{n:"Bibbie",x:"Bibbie per leggere e studiare."},{n:"Libri",x:"Libri per crescere nel cammino."}];
 document.getElementById("events").innerHTML=EVENTS.map(function(e){return '<li><span class="day">'+e.d+'</span><span class="what">'+e.t+'</span><span class="when">'+e.w+'</span></li>';}).join("");
-document.getElementById("shop").innerHTML=SHOP.map(function(s){return '<article class="dep"><h3>'+s.n+'</h3><p class="desc">'+s.x+'</p><p class="lead-name">Prezzo: <b>da inserire</b></p></article>';}).join("");
 var LIFE=[{z:'Pizzuta',g:[['Gruppo 1','Pastor Vinicius e Pastor Antonella'],['Gruppo 2','Augusto e Lidia']]},{z:'Villaggio Miano',g:[['Gruppo 1','Valentina e Daniele'],['Gruppo 2','Giusy Calì']]},{z:'Viale Tica',g:[['Gruppo 1','Salvo e Maria']]},{z:'Mazzarrona',g:[['Gruppo 1','Roberta Bellassai']]},{z:'Parco Robinson, quartiere Tiche',g:[['Gruppo 1','Luca Orofino e Anna']]},{z:'Città Giardino Belvedere',g:[['Gruppo 1','Alessio e Giuliana']]},{z:'Gruppo Giovani',g:[['Gruppo 1','Ester, Alessandro e Carlotta']]}];
 // Email dei responsabili, es. LEM['Pizzuta Gruppo 1']='nome@email.it'
 var LEM={'Città Giardino Belvedere Gruppo 1':'garalessio@gmail.com','Pizzuta Gruppo 1':'Visfit@yahoo.it','Parco Robinson, quartiere Tiche Gruppo 1':'lucaorofino@hotmail.it','Villaggio Miano Gruppo 1':'valentinapatania12@gmail.com'};var LWA={'Città Giardino Belvedere Gruppo 1':'393207436379','Pizzuta Gruppo 1':'393476870698','Parco Robinson, quartiere Tiche Gruppo 1':'393920613832','Villaggio Miano Gruppo 1':'393481711007','Viale Tica Gruppo 1':'393496829028','Gruppo Giovani Gruppo 1':'393518754346'};var LG=[];
@@ -57,7 +55,7 @@ document.getElementById("in-b").addEventListener("click",function(){
 });
 var PHOTOS={};// nome dipartimento -> indirizzo della foto
 function phHtml(n){var p=PHOTOS[n];return '<div class="ph">'+(p?'<img src="'+p+'" alt="Foto del dipartimento '+n+'" loading="lazy">':'<span>'+n.charAt(0)+'</span>')+'</div>';}
-var VIEWS=["home","dipartimenti","life-group","eventi","gruppi","shop","registrazioni"];
+var VIEWS=["home","dipartimenti","life-group","eventi","gruppi","donazioni","registrazioni"];
 function show(v){if(VIEWS.indexOf(v)<0)v="home";VIEWS.forEach(function(x){document.getElementById("v-"+x).classList.toggle("on",x===v);});document.body.setAttribute("data-view",v);document.querySelectorAll("#nav button").forEach(function(b){b.classList.toggle("act",b.getAttribute("data-go")===v);});window.scrollTo(0,0);}
 document.addEventListener("click",function(ev){var b=ev.target.closest("[data-go]");if(!b)return;var v=b.getAttribute("data-go");if(location.hash.slice(1)===v)show(v);else location.hash=v;});
 window.addEventListener("hashchange",function(){show(location.hash.slice(1));});
@@ -97,3 +95,12 @@ root.addEventListener("click",function(ev){
   go(k=="w"?"https://wa.me/"+d.w+"?text="+encodeURIComponent("Iscrizione "+d.n+"\n\n"+body):"mailto:"+d.e+"?subject="+encodeURIComponent("Iscrizione "+d.n)+"&body="+encodeURIComponent(body),true);
   s.textContent=k=="w"?"Si apre WhatsApp: premi invio per mandare il messaggio.":"Si apre la tua email: premi invio per mandare il messaggio. Se non si apre, scrivi a "+d.e+".";
 });
+
+// App installabile (PWA)
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
+var deferredInstall=null,ib=document.getElementById("install-btn"),ih=document.getElementById("install-hint");
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredInstall=e;if(ib)ib.hidden=false;});
+if(ib)ib.addEventListener("click",function(){if(!deferredInstall)return;deferredInstall.prompt();deferredInstall.userChoice.then(function(){deferredInstall=null;ib.hidden=true;});});
+var isIos=/iphone|ipad|ipod/i.test(navigator.userAgent),isStandalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+if(isIos&&!isStandalone&&ih)ih.hidden=false;
+window.addEventListener("appinstalled",function(){if(ib)ib.hidden=true;if(ih)ih.hidden=true;});
